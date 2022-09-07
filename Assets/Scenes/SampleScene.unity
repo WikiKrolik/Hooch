@@ -282,7 +282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 349550287}
   - component: {fileID: 349550289}
-  - component: {fileID: 349550288}
   m_Layer: 0
   m_Name: bombay
   m_TagString: Alcohol
@@ -305,20 +304,6 @@ Transform:
   m_Father: {fileID: 776438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &349550288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349550286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17c9694d6fbecb4bb7f44bdf82ed537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetPosition: {x: 0, y: 0, z: 0}
-  speed: 2
 --- !u!212 &349550289
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -382,6 +367,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -455,6 +441,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: face5857b4a328d4e80f09f32e9e3f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &526767217
 GameObject:
   m_ObjectHideFlags: 0
