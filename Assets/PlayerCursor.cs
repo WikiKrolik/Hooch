@@ -5,6 +5,7 @@ public class PlayerCursor : MonoBehaviour
 {
     private GameObject[] _alcohols;
     private GameObject _selected;
+    private Vector3 _position = new Vector3(4.86f, 0.45f, 1368424f);
 
     private void Start()
     {
@@ -47,5 +48,21 @@ public class PlayerCursor : MonoBehaviour
         }
         if(result == null) return _selected;
         return result;
+    }
+
+    public void Pour(InputAction.CallbackContext context)
+    {
+        if (_selected != null)
+        {
+            if (context.started)
+            {
+                //_selected.GetComponent<Alcohol>().Move();
+                StartCoroutine(_selected.GetComponent<Alcohol>().Move());
+            }
+            if (context.canceled)
+            {
+                StartCoroutine(_selected?.GetComponent<Alcohol>().MoveBack());
+            }
+        }
     }
 }
