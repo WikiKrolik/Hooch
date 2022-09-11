@@ -3,38 +3,69 @@ using UnityEngine;
 
 public class Alcohol : MonoBehaviour
 {
-    private AlcoholData _alcoholData; //TODO: Assign data to each alcohol at Start()
+    [Header("Main alcohol data")]
+    [SerializeField] private AlcoholData alcoholData; //TODO: Assign data to each alcohol at Start
+
+    [Header("Shaker coordinates")]
+    [SerializeField] private Vector3 targetPosition = new(4.86f, 0.45f, 0);
+    [SerializeField] private Quaternion targetRotation = Quaternion.Euler(0, 0.0f, -90.0f);
+    
+    [Header("Pouring animation")]
+    [SerializeField] private float speed = 100f;
+    
     private Vector3 _initialPosition;
-    private Vector3 _targetPosition = new Vector3(4.86f, 0.45f, 0);
-    private Vector3 _targetRotation = new Vector3(0, 0.0f, -90.0f * 9);
-    private float speed = 100f;
-    Vector3 _eulerAngleVelocity = new Vector3(0, 0, -83);
+    private Quaternion _initialRotation;
+    private bool _animationPlaying;
+    private bool _animationCancelled;
 
     private void Start()
     {
         _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
     }
 
     public IEnumerator Move()
     {
-        while (transform.position != _targetPosition && transform.rotation.eulerAngles != _targetRotation)
+        if (_animationPlaying)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime); ;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(_targetRotation), speed * 5 * Time.deltaTime); ;
+            _animationCancelled = true;
+            yield return new WaitForEndOfFrame();
+            _animationCancelled = false;
+        }
+        
+        _animationPlaying = true;
+
+        while ((transform.position != targetPosition || transform.rotation != targetRotation) && !_animationCancelled)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, speed * 5 * Time.deltaTime); ;
             yield return null;
         }
         
-
+        _animationPlaying = false;
+        
+        Debug.Log("Movement started");
     }
 
     public IEnumerator MoveBack()
     {
-
-        while (transform.position != _initialPosition && transform.rotation.eulerAngles != new Vector3(0.0f, 0.0f, 0.0f))
+        if (_animationPlaying)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _initialPosition, speed * Time.deltaTime); ;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), speed * 5 * Time.deltaTime); ;
+            _animationCancelled = true;
+            yield return new WaitForEndOfFrame();
+            _animationCancelled = false;
+        }
+
+        _animationPlaying = true;
+        while ((transform.position != _initialPosition || transform.rotation != _initialRotation) && !_animationCancelled)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _initialPosition, speed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, _initialRotation, speed * 5 * Time.deltaTime); ;
             yield return null;
         }
+
+        _animationPlaying = false;
+
+        Debug.Log("Movement finished");
     }
 }

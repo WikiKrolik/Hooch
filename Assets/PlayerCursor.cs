@@ -52,17 +52,17 @@ public class PlayerCursor : MonoBehaviour
 
     public void Pour(InputAction.CallbackContext context)
     {
-        if (_selected != null)
+        if (_selected == null) return;
+
+        Alcohol alcohol = _selected.GetComponent<Alcohol>();
+        
+        if (context.started)
         {
-            if (context.started)
-            {
-                //_selected.GetComponent<Alcohol>().Move();
-                StartCoroutine(_selected.GetComponent<Alcohol>().Move());
-            }
-            if (context.canceled)
-            {
-                StartCoroutine(_selected?.GetComponent<Alcohol>().MoveBack());
-            }
+            StartCoroutine(alcohol.Move());
+        }
+        else if (context.canceled)
+        {
+            StartCoroutine(alcohol.MoveBack());
         }
     }
 }
