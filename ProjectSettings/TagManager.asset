@@ -6,6 +6,8 @@ TagManager:
   tags:
   - player
   - Alcohol
+  - PartyMaker
+  - animation
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b822964ac7a8a343a8863469e11c47c, type: 3}
+  m_Name: Jacek
+  m_EditorClassIdentifier: 
+  name: Jacek
+  description: 
+  voltage: 0
+  ingredients: 0
+  sprite: {fileID: 21300000, guid: 2e65621aecf04794c894da9f272d5264, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  fluidColor: {r: 0.7075472, g: 0.31861413, b: 0.130162, a: 0.9019608}
