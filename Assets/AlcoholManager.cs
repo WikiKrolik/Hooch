@@ -14,7 +14,7 @@ public class AlcoholManager : MonoBehaviour
         int num = 0;
         foreach (AlcoholData data in alcohols)
         {
-            GameObject alcohol = Instantiate(this.alcohol, new Vector3(-9f + num, 4.5f, 0), Quaternion.identity);
+            GameObject alcohol = Instantiate(this.alcohol, new Vector3(-10f + num, 4.5f, 0), Quaternion.identity);
             alcohol.GetComponent<Alcohol>().alcoholData = data;
             num += 2;
         }
