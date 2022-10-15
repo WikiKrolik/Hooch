@@ -17,8 +17,9 @@ public class Alcohol : MonoBehaviour
     
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
-    private bool _animationPlaying;
+    public bool _animationPlaying;
     private bool _animationCancelled;
+
 
     private void Start()
     {
@@ -58,8 +59,6 @@ public class Alcohol : MonoBehaviour
         _animationPlaying = false;
         main.startColor = alcoholData.fluidColor;
         GameObject.FindGameObjectWithTag("animation").GetComponent<ParticleSystem>().enableEmission = true;
-        
-        Debug.Log("Movement started");
     }
 
     public IEnumerator MoveBack()
@@ -82,7 +81,5 @@ public class Alcohol : MonoBehaviour
         }
 
         _animationPlaying = false;
-
-        Debug.Log("Movement finished");
     }
 }
